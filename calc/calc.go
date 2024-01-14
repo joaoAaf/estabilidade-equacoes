@@ -1,7 +1,5 @@
 package calc
 
-import "estabilidade-equacoes/cli"
-
 func invertMatrix(matrix []float64, k int) []float64 {
 	var matrixR []float64
 	for i := len(matrix) - 1; i >= 0; i-- {
@@ -55,7 +53,7 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 		} else {
 			count += 1
 		}
-		cli.TableResponse(k, exponent, matrix1, matrix2, j)
+		tableResponse(k, exponent, matrix1, matrix2, j)
 		if k > 0 && matrix1[len(matrix1)-1] == 0 {
 			matrix1 = matrix1[:len(matrix1)-1]
 		}
