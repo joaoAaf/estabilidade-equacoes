@@ -1,3 +1,3 @@
-module github.com/joaoAaf/estabilidade-equacoes
+module estabilidade-equacoes
 
 go 1.21.5
