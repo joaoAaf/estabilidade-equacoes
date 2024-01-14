@@ -2,10 +2,10 @@ package calc
 
 import "estabilidade-equacoes/cli"
 
-func invertMatrix(matrix []float64) []float64 {
+func invertMatrix(matrix []float64, k int) []float64 {
 	var matrixR []float64
 	for i := len(matrix) - 1; i >= 0; i-- {
-		if matrix[i] == 0 && i == len(matrix)-1 {
+		if matrix[i] == 0 && i == len(matrix)-1 && k != 0 {
 		} else if len(matrix) == 1 {
 			matrixR = matrixR[:]
 		} else {
@@ -29,19 +29,20 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 	var matrix2 []float64
 	var j float64
 	var estable bool
+	var count int
 	for k := 0; k <= exponent; k++ {
 		if k == 0 {
 			matrix1 = indexes
-			matrix2 = invertMatrix(matrix1)
+			matrix2 = invertMatrix(matrix1, k)
 		} else if k == exponent {
 			matrix1 = calcMatrix(matrix1, matrix2, j)
 			if matrix1[len(matrix1)-1] == 0 {
 				matrix1 = matrix1[:len(matrix1)-1]
 			}
-			matrix2 = invertMatrix(matrix1)
+			matrix2 = invertMatrix(matrix1, k)
 		} else {
 			matrix1 = calcMatrix(matrix1, matrix2, j)
-			matrix2 = invertMatrix(matrix1)
+			matrix2 = invertMatrix(matrix1, k)
 		}
 		if matrix1[0] != 0 && k != exponent {
 			j = matrix2[0] / matrix1[0]
@@ -49,17 +50,17 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 		if j < 0 {
 			j *= -1
 		}
-		if j < 1 {
+		if j < 1 && j > 0 {
 			estable = true
 		} else {
-			estable = false
+			count += 1
 		}
 		cli.TableResponse(k, exponent, matrix1, matrix2, j)
 		if k > 0 && matrix1[len(matrix1)-1] == 0 {
 			matrix1 = matrix1[:len(matrix1)-1]
 		}
 	}
-	if len(matrix1) > 1 || matrix1[0] == 0 {
+	if len(matrix1) > 1 || matrix1[0] == 0 || count != 0 {
 		estable = false
 	}
 	return estable
