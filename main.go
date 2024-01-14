@@ -2,9 +2,11 @@ package main
 
 import (
 	"estabilidade-equacoes/calc"
+	"estabilidade-equacoes/cli"
 	"estabilidade-equacoes/data"
 )
 
 func main() {
-	calc.ValidateEquation(data.ReceiveData())
+	validate := calc.ValidateEquation(data.ReceiveData())
+	cli.ResultCalc(validate)
 }

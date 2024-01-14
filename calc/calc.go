@@ -1,6 +1,6 @@
 package calc
 
-import "fmt"
+import "estabilidade-equacoes/cli"
 
 func invertMatrix(matrix []float64) []float64 {
 	var matrixR []float64
@@ -54,16 +54,11 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 		} else {
 			estable = false
 		}
-		fmt.Printf("===========================================\n")
-		fmt.Printf("K = %d           %.4g               \n", k, matrix1)
-		fmt.Printf("                %.4g                \n", matrix2)
-		fmt.Printf("-------------------------------------------\n")
-		fmt.Printf("J = %.4g                            \n", j)
+		cli.TableResponse(k, exponent, matrix1, matrix2, j)
 		if k > 0 && matrix1[len(matrix1)-1] == 0 {
 			matrix1 = matrix1[:len(matrix1)-1]
 		}
 	}
-	fmt.Printf("===========================================\n")
 	if len(matrix1) > 1 || matrix1[0] == 0 {
 		estable = false
 	}
