@@ -14,6 +14,7 @@ func receiveData() (int, []float64) {
 		fmt.Scanf("%g", &index)
 		indexes = append(indexes, index)
 	}
+	fmt.Scanln()
 	return exponent, indexes
 }
 
@@ -30,14 +31,12 @@ func Menu() {
 		fmt.Scanln(&opt)
 		switch opt {
 		case "1":
-			fmt.Println()
 			fmt.Println("Digite o grau da equação e os indices em sequencia, separados por espaços, conforme o exemplo abaixo.")
 			fmt.Println("Exemplo: 8z³+z²+z+4 --> 3 8 1 1 4")
 			result := calc.ValidateEquation(receiveData())
 			calc.ResultCalc(result)
 		case "0":
 		default:
-			fmt.Println()
 			fmt.Println("Opção Inválida!")
 		}
 	}
