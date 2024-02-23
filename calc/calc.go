@@ -26,6 +26,7 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 	var matrix1 []float64
 	var matrix2 []float64
 	var j float64
+	var jModule float64
 	var estable bool
 	var count int
 	for k := 0; k <= exponent; k++ {
@@ -44,16 +45,17 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 		}
 		if matrix1[0] != 0 && k != exponent {
 			j = matrix2[0] / matrix1[0]
+			jModule = j
 		}
-		if j < 0 {
-			j *= -1
+		if jModule < 0 {
+			jModule *= -1
 		}
-		if j < 1 && j > 0 {
+		if jModule < 1 && jModule > 0 {
 			estable = true
 		} else {
 			count += 1
 		}
-		tableResponse(k, exponent, matrix1, matrix2, j)
+		tableResponse(k, exponent, matrix1, matrix2, jModule)
 		if k > 0 && matrix1[len(matrix1)-1] == 0 {
 			matrix1 = matrix1[:len(matrix1)-1]
 		}
