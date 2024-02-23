@@ -56,7 +56,7 @@ func ValidateEquation(exponent int, indexes []float64) bool {
 			count += 1
 		}
 		tableResponse(k, exponent, matrix1, matrix2, jModule)
-		if k > 0 && matrix1[len(matrix1)-1] == 0 {
+		if k > 0 && matrix1[len(matrix1)-1] == 0 && k < len(matrix1) {
 			matrix1 = matrix1[:len(matrix1)-1]
 		}
 	}
