@@ -9,4 +9,5 @@ import (
 func Router() {
 	router := gin.Default()
 	router.POST("/calc", controler.InputCalc)
+	router.Run(":8080")
 }
