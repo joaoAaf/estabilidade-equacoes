@@ -1,9 +1,9 @@
 package main
 
 import (
-	"estabilidade-equacoes/cli"
+	"estabilidade-equacoes/router"
 )
 
 func main() {
-	cli.Menu()
+	router.Router()
 }
