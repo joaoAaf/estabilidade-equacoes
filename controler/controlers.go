@@ -14,5 +14,5 @@ func InputCalc(c *gin.Context) {
 		c.IndentedJSON(http.StatusBadRequest, gin.H{"message": err})
 	}
 	result := service.ValidateEquation(input)
-	c.IndentedJSON(http.StatusOK, result)
+	c.IndentedJSON(http.StatusCreated, result)
 }
