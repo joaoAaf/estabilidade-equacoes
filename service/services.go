@@ -1,6 +1,9 @@
-package calc
+package service
 
-import "estabilidade-equacoes/entity"
+import (
+	"estabilidade-equacoes/entity"
+	"estabilidade-equacoes/input"
+)
 
 func invertMatrix(matrix []float64, k int) []float64 {
 	var matrixR []float64
@@ -24,7 +27,7 @@ func calcMatrix(matrix1 []float64, matrix2 []float64, j float64) []float64 {
 	return matrix
 }
 
-func ValidateEquation(input entity.Input) entity.Result {
+func ValidateEquation(input input.Input) entity.Result {
 	var calc entity.Calc
 	var result entity.Result
 	var j float64
