@@ -8,10 +8,11 @@ import (
 )
 
 func Router() {
+	gin.SetMode(gin.ReleaseMode)
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: []string{"*"},
-		AllowMethods: []string{"GET", "POST", "PUT", "DELETE"},
+		AllowMethods: []string{"POST"},
 		AllowHeaders: []string{"Content-Type", "access-control-allow-origin", "access-control-allow-headers"},
 	}))
 	router.POST("/calc", controler.InputCalc)
